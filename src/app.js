@@ -87,12 +87,13 @@ class Calculator {
 
 const numberButtons = document.querySelectorAll('.js-data-number');
 const operationButtons = document.querySelectorAll('.js-data-operation');
+
 const equalsButton = document.querySelector('.js-data-equals');
 const deleteButton = document.querySelector('.js-data-delete');
 const clearAllButton = document.querySelector('.js-data-clear-all');
 
-const previousOperandTextElement = document.querySelector('js-data-previous-operand');
-const currentOperandTextElement = document.querySelector('js-data-current-operand');
+const previousOperandTextElement = document.querySelector('.js-data-previous-operand');
+const currentOperandTextElement = document.querySelector('.js-data-current-operand');
 
 let myCalculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
