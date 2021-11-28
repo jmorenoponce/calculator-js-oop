@@ -6,16 +6,6 @@ class Calculator {
         this.clear();
     }
 
-    delete() {
-        this.currentOperand = this.currentOperand.toString().slice(0, -1);
-    }
-
-    clear() {
-        this.currentOperand = '';
-        this.previosOperand = '';
-        this.operation = undefined;
-    }
-
     appendNumber(number) {
         if (number === '.' && this.currentOperand.includes('.')) return;
         this.currentOperand = this.currentOperand.toString() + number.toString();
@@ -29,6 +19,16 @@ class Calculator {
         this.operation = operation;
         this.previousOperand = this.currentOperand;
         this.currentOperand = '';
+    }
+
+    delete() {
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
+    }
+
+    clear() {
+        this.currentOperand = '';
+        this.previosOperand = '';
+        this.operation = undefined;
     }
 
     calculate() {

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>JavaScript OOP Calculator Practice</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+
+<body>
+
+<section>
+    <article>
+        <div class="container text-center">
+            <header>
+                <h1 class="h1">Calculator-js-oop</h1>
+                <p>Este es un ejercicio para aprender Javascript con Orientación a Objetos</p>
+            </header>
+
+            <h2 class="h2">Tecnologías utilizadas:</h2>
+            <ul>
+                <li>JS Vanilla</li>
+                <li>Npm</li>
+                <li>Sass</li>
+            </ul>
+
+            <div class="calculator-test">
+
+                <div class="calculator calculator-cnt">
+                    <div class="display">
+                        <div class="previous-operand js-data-previous-operand"></div>
+                        <div class="current-operand js-data-current-operand"></div>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="memory inactive">MC</button>
+                        <button class="memory inactive">MR</button>
+                        <button class="memory inactive">M+</button>
+                        <button class="memory inactive">M-</button>
+
+                        <button class="operator js-data-operation">%</button>
+                        <button class="memory js-data-clear-all">CE</button>
+                        <button class="memory js-data-clear-operand">C</button>
+                        <button class="memory js-data-delete">DEL</button>
+
+                        <button class="operator inactive">1/x</button>
+                        <button class="operator inactive">x2</button>
+                        <button class="operator inactive">Raiz</button>
+                        <button class="operator js-data-operation">/</button>
+
+                        <button class="number js-data-number">7</button>
+                        <button class="number js-data-number">8</button>
+                        <button class="number js-data-number">9</button>
+                        <button class="operator js-data-operation">X</button>
+
+                        <button class="number js-data-number">4</button>
+                        <button class="number js-data-number">5</button>
+                        <button class="number js-data-number">6</button>
+                        <button class="operator js-data-operation">-</button>
+
+                        <button class="number js-data-number">1</button>
+                        <button class="number js-data-number">2</button>
+                        <button class="number js-data-number">3</button>
+                        <button class="operator js-data-operation">+</button>
+
+                        <button>+/-</button>
+                        <button class="number js-data-number">0</button>
+                        <button class="number js-data-number">,</button>
+                        <button class="equals js-data-equals">=</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </article>
+</section>
+
+<script src="../src/app.js"></script>
+
+</body>
+
+</html>

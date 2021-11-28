@@ -274,10 +274,13 @@ body {
   padding: 0;
   overflow-x: hidden; }
 
+.container {
+  background-color: #ffffff; }
+
 .calculator-test {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  width: 100%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -285,7 +288,7 @@ body {
 body {
   font-family: "Outfit", sans-serif;
   font-variant-ligatures: no-common-ligatures;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 300;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -295,16 +298,29 @@ body {
   font-size: 48px;
   color: #484949; }
 
-p {
-  font-size: 20px; }
+.h2 {
+  font-size: 22px;
+  color: #484949; }
 
-.calculator-cnt {
-  position: relative;
-  width: 500px;
-  height: 500px;
-  padding: 20px;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 1px; }
+p {
+  color: #666666;
+  font-size: 16px; }
+
+ul, li {
+  color: #666666;
+  font-size: 16px; }
+
+.text-center {
+  text-align: center !important; }
+
+.calculator {
+  position: relative; }
+  .calculator.calculator-cnt {
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 1px; }
 
 /*# sourceMappingURL=styles.css.map */
