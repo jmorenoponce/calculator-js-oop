@@ -1,0 +1,14 @@
+{
+  "name": "calculator-js-oop",
+  "version": "1.0.0",
+  "description": "This is a little practice to use Object Oriented Programing with JavaScript implementing the tipical Calculator",
+  "main": "assets/app.js",
+  "scripts": {
+    "test": "echo \"Error: no se ha especificado ningún test\" && exit 1"
+  },
+  "author": "Jose Manuel Moreno",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.43.5"
+  }
+}
