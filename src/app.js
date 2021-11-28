@@ -59,7 +59,7 @@ class Calculator {
     getDisplayNumber(number) {
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
-        const decimalDigits = stringNumber.split('.')[1];
+        const decimalDigits = stringNumber.split(',')[1];
         let integerDisplay;
         if (isNaN(integerDigits)) {
             integerDisplay = '';
@@ -95,38 +95,38 @@ const clearAllButton = document.querySelector('.js-data-clear-all');
 const previousOperandTextElement = document.querySelector('.js-data-previous-operand');
 const currentOperandTextElement = document.querySelector('.js-data-current-operand');
 
-let myCalculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
+let calculadora = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        myCalculator.appendNumber(button.innerText);
-        myCalculator.updateDisplay();
+        calculadora.appendNumber(button.innerText);
+        calculadora.updateDisplay();
         console.log('numberButton');
     });
 });
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
-        myCalculator.chooseOperation(button.innerText);
-        myCalculator.updateDisplay();
+        calculadora.chooseOperation(button.innerText);
+        calculadora.updateDisplay();
         console.log('operationButton');
     });
 });
 
 equalsButton.addEventListener('click', () => {
-    myCalculator.calculate();
-    myCalculator.updateDisplay();
+    calculadora.calculate();
+    calculadora.updateDisplay();
     console.log('equalsButton');
 });
 
 deleteButton.addEventListener('click', () => {
-    myCalculator.delete();
-    myCalculator.updateDisplay();
+    calculadora.delete();
+    calculadora.updateDisplay();
     console.log('deleteButton');
 });
 
 clearAllButton.addEventListener('click', () => {
-    myCalculator.clear();
-    myCalculator.updateDisplay();
+    calculadora.clear();
+    calculadora.updateDisplay();
     console.log('clearAllButton');
 });
