@@ -1,5 +1,7 @@
 class Calculator {
 
+    'use strict';
+
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
