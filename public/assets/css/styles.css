@@ -275,7 +275,7 @@ body {
   overflow-x: hidden; }
 
 .container {
-  background-color: #ffffff; }
+  background-color: #EEEEEB; }
 
 .calculator-test {
   position: absolute;
@@ -286,7 +286,7 @@ body {
   justify-content: center; }
 
 body {
-  font-family: "Outfit", sans-serif;
+  font-family: "Inconsolata", monospace;
   font-variant-ligatures: no-common-ligatures;
   font-size: 16px;
   font-weight: 300;
