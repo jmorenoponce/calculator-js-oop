@@ -1,7 +1,5 @@
 class Calculator {
 
-    'use strict';
-
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
@@ -29,7 +27,7 @@ class Calculator {
 
     clear() {
         this.currentOperand = '';
-        this.previosOperand = '';
+        this.previousOperand = '';
         this.operation = undefined;
     }
 
@@ -66,7 +64,7 @@ class Calculator {
         if (isNaN(integerDigits)) {
             integerDisplay = '';
         } else {
-            integerDisplay = integerDigits.toLocaleString('en', {
+            integerDisplay = integerDigits.toLocaleString('es', {
                 maximumFractionDigits: 0
             });
         }
