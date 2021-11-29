@@ -4,21 +4,17 @@ class Calculator {
 
         this._previousOperandTextElement = previousOperandTextElement;
         this._currentOperandTextElement = currentOperandTextElement;
-
-        this._currentOperand = '';
-        this._previousOperand = '';
-        this._operation = undefined;
+        this.clear();
     }
 
     appendNumber(number) {
-        if (number === '.' && this._currentOperand.includes('.')) return;
+        if (number === ',' && this._currentOperand.includes('.')) return;
         this._currentOperand = this._currentOperand.toString() + number.toString();
     }
 
     chooseOperation(operation) {
-        if (this._previousOperand !== '') {
+        if (this._previosOperand !== '') {
             this.calculate();
-
             this._operation = operation;
             this._previousOperand = this._currentOperand;
             this._currentOperand = '';
@@ -38,9 +34,8 @@ class Calculator {
     calculate() {
         const prev = parseFloat(this._previousOperand);
         const current = parseFloat(this._currentOperand);
-
         let result;
-
+        if (isNaN(prev) || isNaN(current)) return;
         switch (this._operation) {
             case '+':
                 result = prev + current;
@@ -57,25 +52,20 @@ class Calculator {
             default:
                 return;
         }
-
         this._currentOperand = result;
-        this._previousOperand = '';
+        this._previosOperand = '';
         this._operation = undefined;
     }
 
-    getDisplayNumber(number) {
+    _getDisplayNumber(number) {
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
-        const decimalDigits = stringNumber.split(',')[1];
-
+        const decimalDigits = stringNumber.split('.')[1];
         let integerDisplay;
-
         if (isNaN(integerDigits)) {
             integerDisplay = '';
         } else {
-            integerDisplay = integerDigits.toLocaleString('es', {
-                maximumFractionDigits: 0
-            });
+            integerDisplay = integerDigits.toLocaleString('es', { maximumFractionDigits: 0 });
         }
         if (decimalDigits != null) {
             return `${integerDisplay}.${decimalDigits}`;
@@ -86,9 +76,8 @@ class Calculator {
 
     updateDisplay() {
         this._currentOperandTextElement.innerText = this._currentOperand;
-
         if (this._operation != null) {
-            this._previousOperandTextElement.innerText = `${this.getDisplayNumber(this._previousOperand)} ${this._operation}`;
+            this._previousOperandTextElement.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
         } else {
             this._previousOperandTextElement.innerText = '';
         }
@@ -105,7 +94,7 @@ const clearAllButton = document.querySelector('.ux-data-clear-all');
 const previousOperandTextElement = document.querySelector('.ux-data-previous-operand');
 const currentOperandTextElement = document.querySelector('.ux-data-current-operand');
 
-let calculadora = new Calculator(previousOperandTextElement, currentOperandTextElement);
+const calculadora = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
