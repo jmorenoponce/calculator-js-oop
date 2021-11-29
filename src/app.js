@@ -1,6 +1,8 @@
 class Calculator {
 
-    constructor(previousOperandTextElement, currentOperandTextElement) {
+    constructor() {
+        console.log(this.previousOperandTextElement);
+
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
         this.clear();
@@ -12,13 +14,12 @@ class Calculator {
     }
 
     chooseOperation(operation) {
-        if (this.currentOperand === '') return;
         if (this.previosOperand !== '') {
             this.calculate();
+            this.operation = operation;
+            this.previousOperand = this.currentOperand;
+            this.currentOperand = '';
         }
-        this.operation = operation;
-        this.previousOperand = this.currentOperand;
-        this.currentOperand = '';
     }
 
     delete() {
