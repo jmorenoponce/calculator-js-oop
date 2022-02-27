@@ -5,7 +5,7 @@ const previousOperandTextElement = document.querySelector('.ux-data-previous-ope
 const currentOperandTextElement = document.querySelector('.ux-data-current-operand');
 
 
-// Keyboard selector bonding
+// Buttons selector bonding
 const numberButtons = document.querySelectorAll('.ux-data-number');
 const operationButtons = document.querySelectorAll('.ux-data-operation');
 const equalsButton = document.querySelector('.ux-data-equals');
@@ -100,7 +100,7 @@ class Calculator {
         }
     }
 
-    // Take number from display and
+    // Take number from display and parse if contains decimal digits
     _getDisplayNumber(number) {
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
@@ -121,7 +121,7 @@ class Calculator {
         }
     }
 
-    // Init the Listeners for keyboard control (Memory Functions not implemented yet)
+    // Init the Listeners for buttons control (Memory Functions not implemented yet)
     initialize() {
         numberButtons.forEach(button => {
             button.addEventListener('click', () => {
