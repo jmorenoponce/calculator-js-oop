@@ -1,7 +1,7 @@
 "use strict";
 
-const calculadora = new Calculator(previousOperandTextElement, currentOperandTextElement);
+const calculadora = new Calculator();
 
-window.onload = function () {
-    calculadora.initialize();
-};
+// window.onload = function () {
+//     calculadora.initialize();
+// };

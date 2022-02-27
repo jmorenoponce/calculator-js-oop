@@ -1,102 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>JavaScript OOP Calculator Practice</title>
+        <title>JavaScript OOP Calculator Practice</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="public/assets/css/styles.css"/>
-</head>
+        <link rel="stylesheet" href="public/assets/css/styles.css"/>
+    </head>
 
-<body>
+    <body>
+        <section>
+            <article>
+                <div class="container">
+                    <header>
+                        <h1 class="h1">Calculator-js-oop</h1>
+                        <h2 class="h2">Introducción</h2>
+                        <p>Se plantea este ejercicio como práctica para aprender Javascript con Orientación a Objetos</p>
+                    </header>
 
-<section>
-    <article>
-        <div class="container text-center">
-            <header>
-                <h1 class="h1">Calculator-js-oop</h1>
-                <h2 class="h2">Introducción</h2>
-                <p>Se plantea este ejercicio como práctica para aprender Javascript con Orientación a Objetos</p>
-            </header>
+                    <h3 class="h2">Funcionalidades:</h3>
+                    <ul>
+                        <li>Operaciones básicas</li>
+                        <li>Operaciones en memoria (en desarrollo)</li>
+                        <li>Operaciones exponenciales (en desarrollo)</li>
+                    </ul>
 
-            <h3 class="h2">Funcionalidades:</h3>
-            <ul>
-                <li>Operaciones básicas</li>
-                <li>Operaciones en memoria (en desarrollo)</li>
-                <li>Operaciones exponenciales</li>
-            </ul>
-
-            <h3 class="h2">Tecnologías utilizadas:</h3>
-            <ul>
-                <li>JS Vanilla</li>
-                <li>Npm</li>
-                <li>Sass</li>
-            </ul>
-        </div>
-    </article>
-
-    <article>
-        <div class="container">
-            <div class="calculator-test">
-
-                <div class="calculator calculator-cnt">
-                    <div class="display">
-                        <div class="previous-operand ux-data-previous-operand"></div>
-                        <div class="current-operand ux-data-current-operand"></div>
-                    </div>
-
-                    <div class="buttons">
-                        <button class="memory inactive">MC</button>
-                        <button class="memory inactive">MR</button>
-                        <button class="memory inactive">M+</button>
-                        <button class="memory inactive">M-</button>
-
-                        <button class="operator ux-data-operation">%</button>
-                        <button class="memory ux-data-clear-all">CE</button>
-                        <button class="memory ux-data-clear-operand">C</button>
-                        <button class="memory ux-data-delete">DEL</button>
-
-                        <button class="operator inactive">1/x</button>
-                        <button class="operator inactive">x2</button>
-                        <button class="operator inactive">Raíz</button>
-                        <button class="operator ux-data-operation">/</button>
-
-                        <button class="number ux-data-number">7</button>
-                        <button class="number ux-data-number">8</button>
-                        <button class="number ux-data-number">9</button>
-                        <button class="operator ux-data-operation">*</button>
-
-                        <button class="number ux-data-number">4</button>
-                        <button class="number ux-data-number">5</button>
-                        <button class="number ux-data-number">6</button>
-                        <button class="operator ux-data-operation">-</button>
-
-                        <button class="number ux-data-number">1</button>
-                        <button class="number ux-data-number">2</button>
-                        <button class="number ux-data-number">3</button>
-                        <button class="operator ux-data-operation">+</button>
-
-                        <button>+/-</button>
-                        <button class="number ux-data-number">0</button>
-                        <button class="number ux-data-number">.</button>
-                        <button class="equals ux-data-equals">=</button>
-                    </div>
+                    <h3 class="h2">Tecnologías utilizadas:</h3>
+                    <ul>
+                        <li>JS Vanilla</li>
+                        <li>Npm</li>
+                        <li>Sass</li>
+                    </ul>
                 </div>
+            </article>
 
-            </div>
-        </div>
-    </article>
-</section>
+            <article>
+                <div class="container">
 
-<script src="src/assets/js/calculator.js"></script>
-<script src="src/app.js"></script>
+                    <div class="calculator-test">
 
-</body>
+                        <div class="calculator calculator-cnt">
+                            <div class="display display-cnt">
+                                <div class="display previous-operand ux-data-previous-operand"></div>
+                                <div class="display current-operand ux-data-current-operand"></div>
+                            </div>
 
+                            <div class="buttons buttons-cnt">
+                                <button class="button memory inactive">MC</button>
+                                <button class="button memory inactive">MR</button>
+                                <button class="button memory inactive">M+</button>
+                                <button class="button memory inactive">M-</button>
+
+                                <button class="button operator ux-data-operation">%</button>
+                                <button class="button memory ux-data-clear-all">CE</button>
+                                <button class="button memory ux-data-clear-operand">C</button>
+                                <button class="button memory ux-data-delete">DEL</button>
+
+                                <button class="button operator inactive">1/x</button>
+                                <button class="button operator inactive">x2</button>
+                                <button class="button operator inactive">Raíz</button>
+                                <button class="button operator ux-data-operation">/</button>
+
+                                <button class="button number ux-data-number">7</button>
+                                <button class="button number ux-data-number">8</button>
+                                <button class="button number ux-data-number">9</button>
+                                <button class="button operator ux-data-operation">*</button>
+
+                                <button class="button number ux-data-number">4</button>
+                                <button class="button number ux-data-number">5</button>
+                                <button class="button number ux-data-number">6</button>
+                                <button class="button operator ux-data-operation">-</button>
+
+                                <button class="button number ux-data-number">1</button>
+                                <button class="button number ux-data-number">2</button>
+                                <button class="button number ux-data-number">3</button>
+                                <button class="button operator ux-data-operation">+</button>
+
+                                <button>+/-</button>
+                                <button class="button number ux-data-number">0</button>
+                                <button class="button number ux-data-number">.</button>
+                                <button class="button equals ux-data-equals">=</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+        </section>
+
+        <script src="src/assets/js/calculator.js"></script>
+        <script src="src/app.js"></script>
+    </body>
 </html>
