@@ -1,9 +1,7 @@
 
 "use strict";
 
-
 class Calculator {
-
 
     // Take the Buttons selector bonding & reset
     constructor() {
@@ -103,7 +101,7 @@ class Calculator {
     }
 
 
-    // Float operations is under revision :)
+    // Float operations is under revision
     calculate() {
 
         const prev = parseFloat(this._previousOperand);
@@ -174,4 +172,5 @@ class Calculator {
             return integerDisplay;
         }
     }
+
 }

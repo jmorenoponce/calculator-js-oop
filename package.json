@@ -1,7 +1,7 @@
 {
   "name": "calculator-js-oop",
   "version": "1.0.0",
-  "description": "This is a little practice to use Object Oriented Programing with JavaScript implementing the tipical Calculator",
+  "description": "Se plantea este ejercicio como práctica para aprender Javascript con Orientación a Objetos",
   "main": "assets/app.js",
   "scripts": {
     "test": "echo \"Error: no se ha especificado ningún test\" && exit 1"
