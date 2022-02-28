@@ -130,9 +130,9 @@ class Calculator {
             this.calculate();
         }
 
-        this._operation = operation;
         this._previousOperand = this._currentOperand;
         this._currentOperand = '0';
+        this._operation = operation;
     }
 
 
@@ -181,23 +181,23 @@ class Calculator {
     memoryManager(operation) {
 
         switch (operation) {
-            case 'MC':
+            case 'MC': // Clear
                 this._memoryData = 0;
                 break;
 
-            case 'MR':
+            case 'MR': // Read
                 this._currentOperand = this._memoryData.toString();
                 break;
 
-            case 'MS':
+            case 'MS': // Store
                 this._memoryData = parseFloat(this._currentOperand);
                 break;
 
-            case 'M+':
+            case 'M+': // Add
                 this._memoryData += parseFloat(this._currentOperand);
                 break;
 
-            case 'M-':
+            case 'M-': // Subs
                 this._memoryData -= parseFloat(this._currentOperand);
                 break;
 
@@ -241,4 +241,5 @@ class Calculator {
             return integerDisplay;
         }
     }
+
 }
