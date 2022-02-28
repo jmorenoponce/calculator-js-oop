@@ -106,7 +106,7 @@ class Calculator {
 
         if (number === '.' && this._currentOperand.toString().includes('.')) return;
 
-        if (this._currentOperand === '0') this._currentOperand = '';
+        if (number !== '.' && this._currentOperand === '0') this._currentOperand = '';
 
         this._currentOperand = this._currentOperand.toString() + number.toString();
     }
@@ -124,7 +124,7 @@ class Calculator {
     // Add selected operation. Calculate only if both operands are filled
     chooseOperation(operation) {
 
-        if (this._currentOperand === '0') return;
+        // if (this._currentOperand === '0') return;
 
         if (this._previousOperand !== '0') {
             this.calculate();
@@ -132,7 +132,7 @@ class Calculator {
 
         this._operation = operation;
         this._previousOperand = this._currentOperand;
-        this._currentOperand = '';
+        this._currentOperand = '0';
     }
 
 
@@ -177,7 +177,7 @@ class Calculator {
     }
 
 
-    // Manage for Memory Operations
+    // Manager for Memory Operations
     memoryManager(operation) {
 
         switch (operation) {
@@ -187,6 +187,10 @@ class Calculator {
 
             case 'MR':
                 this._currentOperand = this._memoryData.toString();
+                break;
+
+            case 'MS':
+                this._memoryData = parseFloat(this._currentOperand);
                 break;
 
             case 'M+':
@@ -203,7 +207,7 @@ class Calculator {
     }
 
 
-    // Refresh the display
+    // Refresh the display elements
     updateDisplay() {
 
         this._currentOperandTextElement.innerText = this._currentOperand;
