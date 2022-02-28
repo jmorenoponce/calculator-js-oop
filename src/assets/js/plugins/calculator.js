@@ -15,6 +15,8 @@ class Calculator {
     // Buttons selector bonding & Listeners
     initialize() {
 
+        this._memoryData = 0;
+
         // Display selector bonding
         const previousOperandTextElement = document.querySelector('.ux-calc-previous-operand');
         const currentOperandTextElement = document.querySelector('.ux-calc-current-operand');
@@ -78,40 +80,12 @@ class Calculator {
             this.clearAll();
             this.updateDisplay();
         });
-
-    }
-
-
-    // Manage for Memory Operations
-    memoryManager(operation) {
-
-        switch (operation) {
-            case 'MC':
-                this._memoryData = 0;
-                break;
-
-            case 'MR':
-                this._currentOperand = this._memoryData.toString();
-                break;
-
-            case 'M+':
-                this._memoryData += parseFloat(this._currentOperand);
-                break;
-
-            case 'M-':
-                this._memoryData -= parseFloat(this._currentOperand);
-                break;
-
-            default:
-                return;
-        }
     }
 
 
     // Clear All (CE Button = Operands & Operation)
     clearAll() {
 
-        this._memoryData = 0;
         this._currentOperand = '';
         this._previousOperand = '';
         this._operation = null;
@@ -194,6 +168,32 @@ class Calculator {
         this._currentOperand = result;
         this._previousOperand = '';
         this._operation = null;
+    }
+
+
+    // Manage for Memory Operations
+    memoryManager(operation) {
+
+        switch (operation) {
+            case 'MC':
+                this._memoryData = 0;
+                break;
+
+            case 'MR':
+                this._currentOperand = this._memoryData.toString();
+                break;
+
+            case 'M+':
+                this._memoryData += parseFloat(this._currentOperand);
+                break;
+
+            case 'M-':
+                this._memoryData -= parseFloat(this._currentOperand);
+                break;
+
+            default:
+                return;
+        }
     }
 
 
