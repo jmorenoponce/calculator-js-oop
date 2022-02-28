@@ -16,25 +16,23 @@ class Calculator {
     initialize() {
 
         // Display selector bonding
-        const previousOperandTextElement = document.querySelector('.ux-data-previous-operand');
-        const currentOperandTextElement = document.querySelector('.ux-data-current-operand');
+        const previousOperandTextElement = document.querySelector('.ux-calc-previous-operand');
+        const currentOperandTextElement = document.querySelector('.ux-calc-current-operand');
 
         // Assign Display value elements
         this._previousOperandTextElement = previousOperandTextElement;
         this._currentOperandTextElement = currentOperandTextElement;
 
-        // Buttons selector bonding
-        const numberButtons = document.querySelectorAll('.ux-data-number');
-        const operationButtons = document.querySelectorAll('.ux-data-operation');
-        const equalsButton = document.querySelector('.ux-data-equals');
-        const deleteButton = document.querySelector('.ux-data-delete');
-        const clearOperandButton = document.querySelector('.ux-data-clear-operand');
-        const clearAllButton = document.querySelector('.ux-data-clear-all');
+        //  General Buttons selector bonding
+        const numberButtons = document.querySelectorAll('.ux-calc-number');
+        const operationButtons = document.querySelectorAll('.ux-calc-operation');
+        const memoryButtons = document.querySelectorAll('.ux-calc-memory');
+        const equalsButton = document.querySelector('.ux-calc-equals');
+        const deleteButton = document.querySelector('.ux-calc-delete');
+        const clearOperandButton = document.querySelector('.ux-calc-clear-operand');
+        const clearAllButton = document.querySelector('.ux-calc-clear-all');
 
-        // Buttons selector bonding
-        const numberButtons = document.querySelectorAll('.ux-data-number');
-
-        // Init the Listeners for buttons control (Memory Functions not implemented yet)
+        // Init the Listeners for buttons control
         numberButtons.forEach(button => {
             button.addEventListener('click', () => {
                 this.appendNumber(button.innerText);
@@ -45,6 +43,13 @@ class Calculator {
         operationButtons.forEach(button => {
             button.addEventListener('click', () => {
                 this.chooseOperation(button.innerText);
+                this.updateDisplay();
+            });
+        });
+
+        memoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                this.memoryManager(button.innerText);
                 this.updateDisplay();
             });
         });
@@ -77,9 +82,36 @@ class Calculator {
     }
 
 
+    // Manage for Memory Operations
+    memoryManager(operation) {
+
+        switch (operation) {
+            case 'MC':
+                this._memoryData = 0;
+                break;
+
+            case 'MR':
+                this._currentOperand = this._memoryData.toString();
+                break;
+
+            case 'M+':
+                this._memoryData += parseFloat(this._currentOperand);
+                break;
+
+            case 'M-':
+                this._memoryData -= parseFloat(this._currentOperand);
+                break;
+
+            default:
+                return;
+        }
+    }
+
+
     // Clear All (CE Button = Operands & Operation)
     clearAll() {
 
+        this._memoryData = 0;
         this._currentOperand = '';
         this._previousOperand = '';
         this._operation = null;
