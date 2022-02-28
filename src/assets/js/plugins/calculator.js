@@ -9,12 +9,14 @@ class Calculator {
 
         this.initialize();
         this.clearAll();
+        this.updateDisplay();
     }
 
 
     // Buttons selector bonding & Listeners
     initialize() {
 
+        // Init the Memory
         this._memoryData = 0;
 
         // Display selector bonding
@@ -86,8 +88,8 @@ class Calculator {
     // Clear All (CE Button = Operands & Operation)
     clearAll() {
 
-        this._currentOperand = '';
-        this._previousOperand = '';
+        this._currentOperand = '0';
+        this._previousOperand = '0';
         this._operation = null;
     }
 
@@ -95,7 +97,7 @@ class Calculator {
     // Clear current (C Button = Current Operand)
     clearOperand() {
 
-        this._currentOperand = '';
+        this._currentOperand = '0';
     }
 
 
@@ -103,6 +105,8 @@ class Calculator {
     appendNumber(number) {
 
         if (number === '.' && this._currentOperand.toString().includes('.')) return;
+
+        if (this._currentOperand === '0') this._currentOperand = '';
 
         this._currentOperand = this._currentOperand.toString() + number.toString();
     }
@@ -112,15 +116,17 @@ class Calculator {
     deleteNumber() {
 
         this._currentOperand = this._currentOperand.toString().slice(0, -1);
+
+        if (this._currentOperand === '') this._currentOperand = '0';
     }
 
 
     // Add selected operation. Calculate only if both operands are filled
     chooseOperation(operation) {
 
-        if (this._currentOperand === '') return;
+        if (this._currentOperand === '0') return;
 
-        if (this._previousOperand !== '') {
+        if (this._previousOperand !== '0') {
             this.calculate();
         }
 
@@ -165,8 +171,8 @@ class Calculator {
                 return;
         }
 
-        this._currentOperand = result;
-        this._previousOperand = '';
+        this._currentOperand = result.toString();
+        this._previousOperand = '0';
         this._operation = null;
     }
 
@@ -203,7 +209,7 @@ class Calculator {
         this._currentOperandTextElement.innerText = this._currentOperand;
 
         if (this._operation != null) {
-            this._previousOperandTextElement.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
+            this._previousOperandTextElement.innerText = `${this.getDisplayNumber(this._previousOperand)} ${this._operation}`;
         } else {
             this._previousOperandTextElement.innerText = '';
         }
@@ -211,7 +217,7 @@ class Calculator {
 
 
     // Take number from display and parse if contains decimal digits
-    _getDisplayNumber(number) {
+    getDisplayNumber(number) {
 
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
