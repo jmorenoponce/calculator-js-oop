@@ -1,5 +1,6 @@
 "use strict";
 
+
 class Calculator {
 
 
@@ -18,7 +19,7 @@ class Calculator {
         const previousOperandTextElement = document.querySelector('.ux-data-previous-operand');
         const currentOperandTextElement = document.querySelector('.ux-data-current-operand');
 
-        // Display value elements
+        // Assign Display value elements
         this._previousOperandTextElement = previousOperandTextElement;
         this._currentOperandTextElement = currentOperandTextElement;
 
@@ -29,6 +30,9 @@ class Calculator {
         const deleteButton = document.querySelector('.ux-data-delete');
         const clearOperandButton = document.querySelector('.ux-data-clear-operand');
         const clearAllButton = document.querySelector('.ux-data-clear-all');
+
+        // Buttons selector bonding
+        const numberButtons = document.querySelectorAll('.ux-data-number');
 
         // Init the Listeners for buttons control (Memory Functions not implemented yet)
         numberButtons.forEach(button => {
@@ -64,6 +68,12 @@ class Calculator {
             this.clearAll();
             this.updateDisplay();
         });
+
+        clearAllButton.addEventListener('click', () => {
+            this.clearAll();
+            this.updateDisplay();
+        });
+
     }
 
 
@@ -78,6 +88,7 @@ class Calculator {
 
     // Clear current (C Button = Current Operand)
     clearOperand() {
+
         this._currentOperand = '';
     }
 
@@ -188,5 +199,4 @@ class Calculator {
             return integerDisplay;
         }
     }
-
 }
