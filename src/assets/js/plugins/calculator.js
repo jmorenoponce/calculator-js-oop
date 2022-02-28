@@ -1,7 +1,7 @@
-
 "use strict";
 
 class Calculator {
+
 
     // Take the Buttons selector bonding & reset
     constructor() {
@@ -27,6 +27,7 @@ class Calculator {
         const operationButtons = document.querySelectorAll('.ux-data-operation');
         const equalsButton = document.querySelector('.ux-data-equals');
         const deleteButton = document.querySelector('.ux-data-delete');
+        const clearOperandButton = document.querySelector('.ux-data-clear-operand');
         const clearAllButton = document.querySelector('.ux-data-clear-all');
 
         // Init the Listeners for buttons control (Memory Functions not implemented yet)
@@ -54,6 +55,11 @@ class Calculator {
             this.updateDisplay();
         });
 
+        clearOperandButton.addEventListener('click', () => {
+            this.clearOperand();
+            this.updateDisplay()
+        })
+
         clearAllButton.addEventListener('click', () => {
             this.clearAll();
             this.updateDisplay();
@@ -67,6 +73,12 @@ class Calculator {
         this._currentOperand = '';
         this._previousOperand = '';
         this._operation = null;
+    }
+
+
+    // Clear current (C Button = Current Operand)
+    clearOperand() {
+        this._currentOperand = '';
     }
 
 
@@ -126,6 +138,10 @@ class Calculator {
 
             case '/':
                 result = prev / current;
+                break;
+
+            case '+/-':
+                result = !(current);
                 break;
 
             default:

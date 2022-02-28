@@ -9,6 +9,7 @@
   "author": "Jose Manuel Moreno",
   "license": "ISC",
   "dependencies": {
-    "sass": "^1.43.5"
+    "sass": "^1.43.5",
+    "vue": "^3.2.31"
   }
 }
