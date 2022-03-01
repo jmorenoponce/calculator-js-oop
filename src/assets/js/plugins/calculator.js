@@ -7,9 +7,13 @@ class Calculator {
     // Take the Buttons selector bonding & reset
     constructor() {
 
+        this._elements = {
+
+        }
+
         this.initialize();
         this.clearAll();
-        this.memoryManager('MC');
+        this.memoryManager('MC'); // Constantes
         this.updateDisplay();
     }
 
@@ -18,12 +22,8 @@ class Calculator {
     initialize() {
 
         // Display selector bonding
-        const previousOperandTextElement = document.querySelector('.ux-calc-previous-operand');
-        const currentOperandTextElement = document.querySelector('.ux-calc-current-operand');
-
-        // Assign Display value elements
-        this._previousOperandTextElement = previousOperandTextElement;
-        this._currentOperandTextElement = currentOperandTextElement;
+        this._previousOperandTextElement = document.querySelector('.ux-calc-previous-operand');
+        this._currentOperandTextElement = document.querySelector('.ux-calc-current-operand');
 
         //  General Buttons selector bonding
         const numberButtons = document.querySelectorAll('.ux-calc-number');
@@ -99,18 +99,21 @@ class Calculator {
 
         this._currentOperand = this._currentOperand.toString().slice(0, -1);
 
-        if (this._currentOperand === '') this._currentOperand = '0';
+        if (this._currentOperand === '')
+            this._currentOperand = '0';
     }
 
 
     // Add new digit to Current operand
     appendNumber(number) {
 
-        if (number === '.' && this._currentOperand.toString().includes('.')) return;
+        if (number === '.' && this._currentOperand.toString().includes('.'))
+            return;
 
-        if (number !== '.' && this._currentOperand === '0') this._currentOperand = '';
+        if (number !== '.' && this._currentOperand === '0')
+            this._currentOperand = '';
 
-        this._currentOperand = this._currentOperand.toString() + number.toString();
+        this._currentOperand = this._currentOperand.toString() + number;
     }
 
 
@@ -133,7 +136,8 @@ class Calculator {
         const prev = parseFloat(this._previousOperand);
         const current = parseFloat(this._currentOperand);
 
-        if (isNaN(prev) || isNaN(current)) return;
+        if (isNaN(prev) || isNaN(current))
+            return;
 
         let result;
 
@@ -169,10 +173,10 @@ class Calculator {
 
 
     // Manager for Memory Operations
-    memoryManager(operation) {
+    memoryManager(operation) { // _private
 
         switch (operation) {
-            case 'MC': // Clear
+            case 'MC': // Clear !!Usar constantes!!
                 this._memoryData = 0;
                 break;
 
@@ -233,3 +237,4 @@ class Calculator {
         }
     }
 }
+
