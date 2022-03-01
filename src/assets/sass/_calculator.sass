@@ -1,9 +1,9 @@
 // FILE: _calculator.sass
 
 // COMPONENTS: Calculator Theme
-.calculator
+.cmp-calculator
 
-    &.calculator-cnt
+    .calculator-cnt
         width: 500px
         height: 500px
         padding: 20px
@@ -11,19 +11,16 @@
         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2)
         border-radius: 1px
 
-    .display
-
-        &.display-cnt
-            display: flex
-            flex-direction: column
-            flex-wrap: nowrap
-            gap: 5px
-            background-color: #EEEEEB
+    .display-cnt
+        display: flex
+        flex-direction: column
+        flex-wrap: nowrap
+        gap: 5px
+        background-color: #EEEEEB
 
         .display-row
             height: 25px
             width: 100%
-
 
             &.previous-operand
                 font-size: 14px
@@ -31,3 +28,20 @@
             &.current-operand
                 font-size: 22px
                 font-weight: 500
+
+    .buttons-cnt
+
+        .main-btn
+                background-color: #ff2929
+
+        .memory-btn
+                background-color: #29a7de
+
+        .operator-btn
+                background-color: #969696
+
+        .digit-btn
+                background-color: #484949
+
+        &.inactive
+            display: none
