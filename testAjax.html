@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <title>Ajax test</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="src/assets/js/Ajax/AjaxManager.js" crossorigin="anonymous"></script>
+        <script src="src/assets/js/Ajax/Ajax.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div id="users-cnt"></div>
+    <script>
+        function composeSelect (data) {
+
+        	var select = '<select>';
+
+        	for (var i in data) {
+
+        		select += '<option value="' + i + '">' + data[i].lastName + ', ' + data[i].name + '</option>'
+            }
+
+        	select += '</select>';
+
+        	document.getElementById('users-cnt').innerHTML = document.getElementById('users-cnt').innerHTML + select;
+         }
+
+        Ajax.get('test/testAjax.php', function (data) {
+        	console.log(data)
+        });
+        Ajax.post('test/testAjax.php', {
+        	data: {
+        		user: 'myUser',
+                password: 'myPass'
+            }
+        }, function (data) {
+        	console.log(data)
+        });
+        Ajax.post('test/testAjax.php', {
+        	data: {
+        		user: 'myUser',
+                password: 'myPass'
+            },
+            headers: {
+				'x-csrftoken': '54325FDA'
+			}
+        }, function (data, status, jqXHR) {
+        	console.log(data, jqXHR.getResponseHeader('x-server-custom'))
+        });
+        Ajax.get('test/testAjax.php', {
+        	data: {
+				getUsers: '1',
+            }
+        }, function (data, status, jqXHR) {
+			//composeSelect(data);
+        });
+
+
+
+
+
+        Ajax.get('test/testAjax.php', {
+        	data: {
+				action: 'getUsers',
+            }
+        }, function (data, status, jqXHR) {
+			composeSelect(data);
+        });
+
+
+        Ajax.get('test/testAjax.php', {
+        	data: {
+				action: 'getProvinces',
+            }
+        }, function (data, status, jqXHR) {
+			composeSelect(data);
+        });
+    </script>
+
+    </body>
+</html>
