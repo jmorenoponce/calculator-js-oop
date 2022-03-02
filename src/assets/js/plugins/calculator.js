@@ -7,14 +7,12 @@ class Calculator {
     // Take the Buttons selector bonding & reset
     constructor() {
 
-        this._elements = {
-
-        }
+        this._elements = {}
 
         this.initialize();
         this.clearAll();
-        this.memoryManager('MC'); // Constantes
-        this.updateDisplay();
+        this._memoryManager('MC'); // Constantes
+        this._updateDisplay();
     }
 
 
@@ -38,42 +36,42 @@ class Calculator {
         numberButtons.forEach(button => {
             button.addEventListener('click', () => {
                 this.appendNumber(button.innerText);
-                this.updateDisplay();
+                this._updateDisplay();
             });
         });
 
         operationButtons.forEach(button => {
             button.addEventListener('click', () => {
                 this.chooseOperation(button.innerText);
-                this.updateDisplay();
+                this._updateDisplay();
             });
         });
 
         memoryButtons.forEach(button => {
             button.addEventListener('click', () => {
-                this.memoryManager(button.innerText);
-                this.updateDisplay();
+                this._memoryManager(button.innerText);
+                this._updateDisplay();
             });
         });
 
         equalsButton.addEventListener('click', () => {
             this.calculate();
-            this.updateDisplay();
+            this._updateDisplay();
         });
 
         deleteButton.addEventListener('click', () => {
             this.deleteNumber();
-            this.updateDisplay();
+            this._updateDisplay();
         });
 
         clearOperandButton.addEventListener('click', () => {
             this.clearOperand();
-            this.updateDisplay()
+            this._updateDisplay()
         })
 
         clearAllButton.addEventListener('click', () => {
             this.clearAll();
-            this.updateDisplay();
+            this._updateDisplay();
         });
     }
 
@@ -173,7 +171,7 @@ class Calculator {
 
 
     // Manager for Memory Operations
-    memoryManager(operation) { // _private
+    _memoryManager(operation) {
 
         switch (operation) {
             case 'MC': // Clear !!Usar constantes!!
@@ -203,20 +201,20 @@ class Calculator {
 
 
     // Refresh the Display elements
-    updateDisplay() {
+    _updateDisplay() {
 
         this._currentOperandTextElement.innerText = this._currentOperand;
 
         if (this._operation != null) {
-            this._previousOperandTextElement.innerText = `${this.getDisplayNumber(this._previousOperand)} ${this._operation}`;
+            this._previousOperandTextElement.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
         } else {
             this._previousOperandTextElement.innerText = '';
         }
     }
 
 
-    // Take number from Display and parse if contains decimal digits
-    getDisplayNumber(number) {
+    // Take number from Display and parse the decimal digits
+    _getDisplayNumber(number) {
 
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
