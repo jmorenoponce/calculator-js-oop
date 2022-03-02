@@ -386,7 +386,11 @@ ul, li {
 .cmp-calculator .buttons-cnt .main-btn {
   background-color: #ff2929;
 }
+<<<<<<< HEAD
 .cmp-calculator .buttons-cnt .memory-btn {
+=======
+.cmp-calculator .buttons-cnt .btn-memory {
+>>>>>>> master
   background-color: #29a7de;
 }
 .cmp-calculator .buttons-cnt .operator-btn {
