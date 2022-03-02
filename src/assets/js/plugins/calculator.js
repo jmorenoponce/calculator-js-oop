@@ -8,7 +8,8 @@ class Calculator {
     constructor() {
 
         this._elements = {
-
+            previousOperand: false,
+            currentOperand: false
         }
 
         this.initialize();
@@ -22,8 +23,8 @@ class Calculator {
     initialize() {
 
         // Display selector bonding
-        this._previousOperandTextElement = document.querySelector('.ux-calc-previous-operand');
-        this._currentOperandTextElement = document.querySelector('.ux-calc-current-operand');
+        this._elements.previousOperand = document.querySelector('.ux-calc-previous-operand');
+        this._elements.currentOperand = document.querySelector('.ux-calc-current-operand');
 
         //  General Buttons selector bonding
         const numberButtons = document.querySelectorAll('.ux-calc-number');
@@ -205,12 +206,12 @@ class Calculator {
     // Refresh the Display elements
     updateDisplay() {
 
-        this._currentOperandTextElement.innerText = this._currentOperand;
+        this._elements.currentOperand.innerText = this._currentOperand;
 
         if (this._operation != null) {
-            this._previousOperandTextElement.innerText = `${this.getDisplayNumber(this._previousOperand)} ${this._operation}`;
+            this._elements.previousOperand.innerText = `${this.getDisplayNumber(this._previousOperand)} ${this._operation}`;
         } else {
-            this._previousOperandTextElement.innerText = '';
+            this._elements.previousOperand.innerText = '';
         }
     }
 
