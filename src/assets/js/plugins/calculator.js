@@ -314,6 +314,5 @@ class Calculator {
             DIGIT_9: '9',
         }
     }
-
 }
 
