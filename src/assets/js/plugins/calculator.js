@@ -23,24 +23,17 @@ class Calculator {
         this._previousOperand = '';
         this._operation = null;
 
-<<<<<<< HEAD
-        this.clearAll();
-        this._memoryManager(this.BUTTON_VALUES.MEM_CLEAR);
-        this._updateDisplay();
-=======
         this._memoryData = 0;
 
         this._elemCodes = {};
         this._keyCodes = {};
 
         this.initialize();
->>>>>>> develop/jose
     }
 
 
     // Buttons selector binding & Listeners
     initialize() {
-
 
         this._declareKeyCodes();
         this._declareElemCodes();
