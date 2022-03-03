@@ -1,37 +1,56 @@
 "use strict";
 
+
 class Calculator {
 
-    _elements = {
-        numberButtons: false,
-        operationButtons: false,
-        memoryButtons: false,
-        equalsButton: false,
-        deleteButton: false,
-        clearOperandButton: false,
-        clearAllButton: false,
-        previousOperandDisplay: false,
-        currentOperandDisplay: false
-    }
 
     // Take the Buttons selector binding & reset
     constructor() {
 
-        this._defineValues();
+        this._viewElems = {
+            numberButtons: false,
+            operationButtons: false,
+            memoryButtons: false,
+            equalsButton: false,
+            deleteButton: false,
+            clearOperandButton: false,
+            clearAllButton: false,
+            previousOperandDisplay: false,
+            currentOperandDisplay: false
+        }
 
-        this.initialize();
+        this._currentOperand = '';
+        this._previousOperand = '';
+        this._operation = null;
 
+<<<<<<< HEAD
         this.clearAll();
         this._memoryManager(this.BUTTON_VALUES.MEM_CLEAR);
         this._updateDisplay();
+=======
+        this._memoryData = 0;
+
+        this._elemCodes = {};
+        this._keyCodes = {};
+
+        this.initialize();
+>>>>>>> develop/jose
     }
 
 
     // Buttons selector binding & Listeners
     initialize() {
 
-        this._bindingElements()
-        this._initButtonsEvents()
+
+        this._declareKeyCodes();
+        this._declareElemCodes();
+        this._initViewElements();
+        this._initViewEvents();
+        this._initKeyEvents();
+        this._memoryManager(this._elemCodes.MEM_CLEAR);
+
+        this.clearAll();
+        this._updateDisplay();
     }
 
 
@@ -99,23 +118,23 @@ class Calculator {
         let result;
 
         switch (this._operation) {
-            case this.BUTTON_VALUES.OPE_SUM:
+            case this._elemCodes.OPE_SUM:
                 result = prev + current;
                 break;
 
-            case this.BUTTON_VALUES.OPE_SUB:
+            case this._elemCodes.OPE_SUB:
                 result = prev - current;
                 break;
 
-            case this.BUTTON_VALUES.OPE_MUL:
+            case this._elemCodes.OPE_MUL:
                 result = prev * current;
                 break;
 
-            case this.BUTTON_VALUES.OPE_DIV:
+            case this._elemCodes.OPE_DIV:
                 result = prev / current;
                 break;
 
-            case this.BUTTON_VALUES.OPE_NEG:
+            case this._elemCodes.OPE_NEG:
                 result = current * -1;
                 break;
 
@@ -133,23 +152,23 @@ class Calculator {
     _memoryManager(operation) {
 
         switch (operation) {
-            case this.BUTTON_VALUES.MEM_CLEAR: // Clear
+            case this._elemCodes.MEM_CLEAR: // Clear
                 this._memoryData = 0;
                 break;
 
-            case this.BUTTON_VALUES.MEM_READ: // Read
+            case this._elemCodes.MEM_READ: // Read
                 this._currentOperand = this._memoryData.toString();
                 break;
 
-            case this.BUTTON_VALUES.MEM_STORE: // Store
+            case this._elemCodes.MEM_STORE: // Store
                 this._memoryData = parseFloat(this._currentOperand);
                 break;
 
-            case this.BUTTON_VALUES.MEM_SUM: // Add
+            case this._elemCodes.MEM_SUM: // Add
                 this._memoryData += parseFloat(this._currentOperand);
                 break;
 
-            case this.BUTTON_VALUES.MEM_SUB: // Subs
+            case this._elemCodes.MEM_SUB: // Subs
                 this._memoryData -= parseFloat(this._currentOperand);
                 break;
 
@@ -162,12 +181,12 @@ class Calculator {
     // Refresh the Display elements
     _updateDisplay() {
 
-        this._elements.currentOperandDisplay.innerText = this._currentOperand;
+        this._viewElems.currentOperandDisplay.innerText = this._currentOperand;
 
         if (this._operation != null) {
-            this._elements.previousOperandDisplay.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
+            this._viewElems.previousOperandDisplay.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
         } else {
-            this._elements.previousOperandDisplay.innerText = '';
+            this._viewElems.previousOperandDisplay.innerText = '';
         }
     }
 
@@ -196,9 +215,88 @@ class Calculator {
     }
 
 
-    _defineValues() {
+    _initViewElements() {
 
-        this.BUTTON_VALUES = {
+        // Display selector binding
+        this._viewElems.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
+        this._viewElems.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
+
+        //  Buttons selector binding
+        this._viewElems.numberButtons = document.querySelectorAll('.ux-calc-number');
+        this._viewElems.operationButtons = document.querySelectorAll('.ux-calc-operation');
+        this._viewElems.memoryButtons = document.querySelectorAll('.ux-calc-memory');
+        this._viewElems.equalsButton = document.querySelector('.ux-calc-equals');
+        this._viewElems.deleteButton = document.querySelector('.ux-calc-delete');
+        this._viewElems.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
+        this._viewElems.clearAllButton = document.querySelector('.ux-calc-clear-all');
+    }
+
+
+    _initViewEvents() {
+        // Init the Listeners for buttons control
+        this._viewElems.numberButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                this.appendNumber(button.innerText);
+                this._updateDisplay();
+            });
+        });
+
+        this._viewElems.operationButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                this.chooseOperation(button.innerText);
+                this._updateDisplay();
+            });
+        });
+
+        this._viewElems.memoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                this._memoryManager(button.innerText);
+                this._updateDisplay();
+            });
+        });
+
+        this._viewElems.equalsButton.addEventListener('click', () => {
+            this.calculate();
+            this._updateDisplay();
+        });
+
+        this._viewElems.deleteButton.addEventListener('click', () => {
+            this.deleteNumber();
+            this._updateDisplay();
+        });
+
+        this._viewElems.clearOperandButton.addEventListener('click', () => {
+            this.clearOperand();
+            this._updateDisplay()
+        })
+
+        this._viewElems.clearAllButton.addEventListener('click', () => {
+            this.clearAll();
+            this._updateDisplay();
+        });
+    }
+
+
+    _initKeyEvents() {
+
+        console.log(this._keyCodes);
+    }
+
+
+    _declareKeyCodes() {
+
+        this._keyCodes = {
+            KEY_ENTER: 13,
+            KEY_BACKSPACE: 8,
+            KEY_SPACE: 32,
+            KEY_UP: 38,
+            KAY_DOWN: 40
+        }
+    }
+
+    _declareElemCodes () {
+
+        this._elemCodes = {
             MEM_CLEAR: 'MC',
             MEM_READ: 'MR',
             MEM_STORE: 'MS',
@@ -222,75 +320,7 @@ class Calculator {
             DIGIT_8: '8',
             DIGIT_9: '9',
         }
-
-        const KEY_CODES = {
-            KEY_ENTER: 13,
-            KEY_BACKSPACE: 8,
-            KEY_SPACE: 32,
-            KEY_UP: 38,
-            KAY_DOWN: 40
-        }
     }
 
-
-    _bindingElements() {
-        // Display selector binding
-        this._elements.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
-        this._elements.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
-
-        //  General Buttons selector binding
-        this._elements.numberButtons = document.querySelectorAll('.ux-calc-number');
-        this._elements.operationButtons = document.querySelectorAll('.ux-calc-operation');
-        this._elements.memoryButtons = document.querySelectorAll('.ux-calc-memory');
-        this._elements.equalsButton = document.querySelector('.ux-calc-equals');
-        this._elements.deleteButton = document.querySelector('.ux-calc-delete');
-        this._elements.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
-        this._elements.clearAllButton = document.querySelector('.ux-calc-clear-all');
-    }
-
-
-    _initButtonsEvents() {
-        // Init the Listeners for buttons control
-        this._elements.numberButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this.appendNumber(button.innerText);
-                this._updateDisplay();
-            });
-        });
-
-        this._elements.operationButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this.chooseOperation(button.innerText);
-                this._updateDisplay();
-            });
-        });
-
-        this._elements.memoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this._memoryManager(button.innerText);
-                this._updateDisplay();
-            });
-        });
-
-        this._elements.equalsButton.addEventListener('click', () => {
-            this.calculate();
-            this._updateDisplay();
-        });
-
-        this._elements.deleteButton.addEventListener('click', () => {
-            this.deleteNumber();
-            this._updateDisplay();
-        });
-
-        this._elements.clearOperandButton.addEventListener('click', () => {
-            this.clearOperand();
-            this._updateDisplay()
-        })
-
-        this._elements.clearAllButton.addEventListener('click', () => {
-            this.clearAll();
-            this._updateDisplay();
-        });
-    }
 }
 
