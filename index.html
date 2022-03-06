@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <title>JavaScript OOP Calculator Practice</title>
+        <title>JavaScript OOP CalculatorManager Practice</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
             <article>
                 <div class="container">
                     <header>
-                        <h1 class="h1">Calculator-js-oop</h1>
+                        <h1 class="h1">CalculatorManager-js-oop</h1>
                         <h2 class="h2">Introducción</h2>
                         <p>Se plantea este ejercicio como práctica para aprender Javascript con Orientación a Objetos</p>
                     </header>
@@ -54,38 +54,37 @@
                                 </div>
 
                                 <div class="buttons-cnt">
-                                    <button class="btn-memory ux-calc-memory" data-calc-key="MC">MC</button>
-                                    <button class="btn-memory ux-calc-memory" data-calc-key="MR">MR</button>
-                                    <button class="btn-memory ux-calc-memory" data-calc-key="MS">MS</button>
-                                    <button class="btn-memory ux-calc-memory" data-calc-key="M+">M+</button>
-                                    <button class="btn-memory ux-calc-memory" data-calc-key="M-">M-</button>
+                                    <button class="mem-btn ux-calc-memory" data-calc-key="MC">MC</button>
+                                    <button class="mem-btn ux-calc-memory" data-calc-key="MR">MR</button>
+                                    <button class="mem-btn ux-calc-memory" data-calc-key="MS">MS</button>
+                                    <button class="mem-btn ux-calc-memory" data-calc-key="M+">M+</button>
+                                    <button class="mem-btn ux-calc-memory" data-calc-key="M-">M-</button>
 
-                                    <button class="operation-btn ux-calc-operation" data-calc-key="%">%</button>
-                                    <button class="main-btn ux-calc-clear-all" data-calc-key="ce">CE</button>
-                                    <button class="main-btn ux-calc-clear-operand" data-calc-key="c">C</button>
-                                    <button class="main-btn ux-calc-delete" data-calc-key="del">DEL</button>
+                                    <button class="fnc-btn ux-calc-clear-all" data-calc-key="CE">CE</button>
+                                    <button class="fnc-btn ux-calc-clear-operand" data-calc-key="C">C</button>
+                                    <button class="fnc-btn ux-calc-delete" data-calc-key="DEL">DEL</button>
 
-                                    <button class="operation-btn ux-calc-operation" data-calc-key="/">÷</button>
+                                    <button class="opr-btn ux-calc-operation" data-calc-key="/">÷</button>
 
-                                    <button class="digit-btn ux-calc-number">7</button>
-                                    <button class="digit-btn ux-calc-number">8</button>
-                                    <button class="digit-btn ux-calc-number">9</button>
-                                    <button class="operation-btn ux-calc-operation">*</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="7">7</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="8">8</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="9">9</button>
+                                    <button class="opr-btn ux-calc-operation" data-calc-key="*">X</button>
 
-                                    <button class="digit-btn ux-calc-number">4</button>
-                                    <button class="digit-btn ux-calc-number">5</button>
-                                    <button class="digit-btn ux-calc-number">6</button>
-                                    <button class="operation-btn ux-calc-operation">-</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="4">4</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="5">5</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="6">6</button>
+                                    <button class="opr-btn ux-calc-operation" data-calc-key="-">-</button>
 
-                                    <button class="digit-btn ux-calc-number">1</button>
-                                    <button class="digit-btn ux-calc-number">2</button>
-                                    <button class="digit-btn ux-calc-number">3</button>
-                                    <button class="operation-btn ux-calc-operation">+</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="1">1</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="2">2</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="3">3</button>
+                                    <button class="opr-btn ux-calc-operation" data-calc-key="+">+</button>
 
-                                    <button class="operation-btn ux-calc-operation" data-calc-key="+/-">+/-</button>
-                                    <button class="digit-btn ux-calc-number">0</button>
-                                    <button class="digit-btn ux-calc-number">.</button>
-                                    <button class="digit-btn ux-calc-equals">=</button>
+                                    <button class="opr-btn ux-calc-operation" data-calc-key="+/-">+/-</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key="0">0</button>
+                                    <button class="dgt-btn ux-calc-number" data-calc-key=".">.</button>
+                                    <button class="dgt-btn ux-calc-equals" data-calc-key="=">=</button>
                                 </div>
 
                             </div>
@@ -97,7 +96,10 @@
             </article>
         </section>
 
-        <script src="src/assets/js/plugins/calculator.js"></script>
-        <script src="src/assets/js/app.js"></script>
+        <script src="src/assets/js/Calculator/CalculatorEnvironment.js"></script>
+        <script src="src/assets/js/Calculator/CalculatorUserInterface.js"></script>
+        <script src="src/assets/js/Calculator/CalculatorManager.js"></script>
+        <script src="src/assets/js/Calculator/Calculator.js"></script>
+        <script src="src/assets/js/main.js"></script>
     </body>
 </html>
