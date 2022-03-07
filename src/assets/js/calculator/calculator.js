@@ -1,8 +1,6 @@
 "use strict";
 
-
 class Calculator {
-
 
     // Take the Buttons selector binding & reset
     constructor() {
