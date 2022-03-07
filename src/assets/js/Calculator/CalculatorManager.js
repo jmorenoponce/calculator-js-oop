@@ -5,7 +5,10 @@ class CalculatorManager {
 
 
     // Take the Buttons selector binding & reset
-    constructor() {
+    constructor(userInterface) {
+
+
+        this._userInterface = userInterface;
 
         this._currentOperand = '';
         this._previousOperand = '';
@@ -89,19 +92,19 @@ class CalculatorManager {
         let result;
 
         switch (this._operation) {
-            case this._elementCodes.OPR_SUM:
+            case this._userInterface._elementCodes.OPR_SUM:
                 result = prev + current;
                 break;
 
-            case this._elementCodes.OPR_SUB:
+            case this._userInterface._elementCodes.OPR_SUB:
                 result = prev - current;
                 break;
 
-            case this._elementCodes.OPR_MUL:
+            case this._userInterface._elementCodes.OPR_MUL:
                 result = prev * current;
                 break;
 
-            case this._elementCodes.OPR_DIV:
+            case this._userInterface._elementCodes.OPR_DIV:
                 result = prev / current;
                 break;
 
@@ -119,23 +122,23 @@ class CalculatorManager {
     _memoryManager(operation) {
 
         switch (operation) {
-            case this._elementCodes.MEM_CLEAR: // Clear
+            case this._userInterface._elementCodes.MEM_CLEAR: // Clear
                 this._memoryData = 0;
                 break;
 
-            case this._elementCodes.MEM_READ: // Read
+            case this._userInterface._elementCodes.MEM_READ: // Read
                 this._currentOperand = this._memoryData.toString();
                 break;
 
-            case this._elementCodes.MEM_STORE: // Store
+            case this._userInterface._elementCodes.MEM_STORE: // Store
                 this._memoryData = parseFloat(this._currentOperand);
                 break;
 
-            case this._elementCodes.MEM_SUM: // Add
+            case this._userInterface._elementCodes.MEM_SUM: // Add
                 this._memoryData += parseFloat(this._currentOperand);
                 break;
 
-            case this._elementCodes.MEM_SUB: // Subs
+            case this._userInterface._elementCodes.MEM_SUB: // Subs
                 this._memoryData -= parseFloat(this._currentOperand);
                 break;
 
@@ -148,15 +151,14 @@ class CalculatorManager {
     // Refresh the Display elements
     _updateDisplay() {
 
-        this._viewElems.currentOperandDisplay.innerText = this._currentOperand;
+        this._userInterface._viewElems.currentOperandDisplay.innerText = this._currentOperand;
 
         if (this._operation != null) {
-            this._viewElems.previousOperandDisplay.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
+            this._userInterface._viewElems.previousOperandDisplay.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
         } else {
-            this._viewElems.previousOperandDisplay.innerText = '';
+            this._userInterface._viewElems.previousOperandDisplay.innerText = '';
         }
     }
-
 
 
     // Take number from Display and parse the decimal digits

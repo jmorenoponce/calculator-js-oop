@@ -16,6 +16,6 @@ class Calculator {
     _initialize() {
 
         this._userInterface = new CalculatorUserInterface();
-        this._manager = new CalculatorManager();
+        this._manager = new CalculatorManager(this._userInterface);
     }
 }

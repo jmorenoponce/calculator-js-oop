@@ -20,17 +20,23 @@ class CalculatorUserInterface {
             currentOperandDisplay: false
         }
 
-        return this._initialize();
+        this._env = this._initialize();
+
+        console.log (this._env);
+
+        return this._env;
     }
 
 
     _initialize() {
 
-        this._env = new CalculatorEnvironment();
+        let _env = new CalculatorEnvironment();
 
         this._initViewElements();
         this._initViewEvents();
         this._initKeyboardEvents();
+
+        return _env;
     }
 
 
@@ -52,6 +58,7 @@ class CalculatorUserInterface {
 
 
     _initViewEvents() {
+
         // Init the Listeners for buttons control
         this._viewElems.numberButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -98,6 +105,6 @@ class CalculatorUserInterface {
 
     _initKeyboardEvents() {
 
-        console.log(this._keyboardCodes);
+        console.log(this._env._keyboardCodes);
     }
 }

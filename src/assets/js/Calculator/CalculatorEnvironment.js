@@ -6,21 +6,36 @@ class CalculatorEnvironment {
 
     constructor() {
 
+        this._config = {}
         this._elementCodes = {};
         this._keyboardCodes = {};
 
         this._initialize();
+
+        return this;
     }
 
 
     _initialize() {
 
-        this._declareElementCodes();
-        this._declareKeyboardCodes();
+        this._config = this._declareConfig();
+        this._elementCodes = this._declareElementCodes();
+        this._keyboardCodes = this._declareKeyboardCodes();
     }
 
 
-    _declareElementCodes () {
+    _declareConfig() {
+
+        this._config = {
+            THEME: 'Dark'
+            // Do Stuff
+        }
+
+        return this._config;
+    }
+
+
+    _declareElementCodes() {
 
         this._elementCodes = {
 
@@ -52,6 +67,8 @@ class CalculatorEnvironment {
             DGT_8: '8',
             DGT_9: '9',
         }
+
+        return this._elementCodes
     }
 
 
@@ -65,6 +82,8 @@ class CalculatorEnvironment {
             KEY_DOWN: 40
             // ...
         }
+
+        return this._keyboardCodes;
     }
 }
 
