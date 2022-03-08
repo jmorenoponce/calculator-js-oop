@@ -14,7 +14,7 @@ class CalculatorCore {
 
         this._memoryData = 0;
 
-        return this._initialize();
+        this._initialize();
     }
 
 
