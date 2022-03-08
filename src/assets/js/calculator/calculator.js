@@ -7,15 +7,15 @@ class Calculator {
     constructor() {
 
         this._userInterface = null;
-        this._manager = null;
-
-        this._initialize();
+        this._coreManager = null;
     }
 
 
-    _initialize() {
+    init() {
 
         this._userInterface = new CalculatorUserInterface();
-        this._manager = new CalculatorManager();
+        this._coreManager = new CalculatorManager(this._userInterface);
+
+        console.log(this._coreManager);
     }
 }

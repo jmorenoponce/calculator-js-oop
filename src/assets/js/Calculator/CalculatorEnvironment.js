@@ -6,6 +6,7 @@ class CalculatorEnvironment {
 
     constructor() {
 
+        this._config = {}
         this._elementCodes = {};
         this._keyboardCodes = {};
 
@@ -15,14 +16,26 @@ class CalculatorEnvironment {
 
     _initialize() {
 
-        this._declareElementCodes();
-        this._declareKeyboardCodes();
+        this._config = this._declareConfig();
+        this._elementCodes = this._declareElementCodes();
+        this._keyboardCodes = this._declareKeyboardCodes();
     }
 
 
-    _declareElementCodes () {
+    _declareConfig() {
 
-        this._elementCodes = {
+        return {
+
+            THEME: 'Dark',
+            LOCALE: 'es'
+            // ...
+        }
+    }
+
+
+    _declareElementCodes() {
+
+        return {
 
             FNC_C: 'C',
             FNC_CE: 'CE',
@@ -57,15 +70,14 @@ class CalculatorEnvironment {
 
     _declareKeyboardCodes() {
 
-        this._keyboardCodes = {
+        return {
+
             KEY_ENTER: 13,
             KEY_BACKSPACE: 8,
             KEY_SPACE: 32,
             KEY_UP: 38,
             KEY_DOWN: 40
             // ...
-        }
+        };
     }
 }
-
-
