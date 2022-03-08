@@ -6,16 +6,19 @@ class Calculator {
 
     constructor() {
 
+        this._core = null;
         this._userInterface = null;
-        this._coreManager = null;
+        this._interfaceManager = null;
     }
 
 
     init() {
 
-        this._userInterface = new CalculatorUserInterface();
-        this._coreManager = new CalculatorManager(this._userInterface);
+        this._userInterface = new UserInterface();
+        this._core = new CalculatorCore();
 
-        console.log(this._coreManager);
+        this._interfaceManager = new UserInterfaceManager(this._userInterface, this._core)
+
+        console.log(this._interfaceManager);
     }
 }

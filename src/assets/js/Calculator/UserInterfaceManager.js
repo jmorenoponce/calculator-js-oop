@@ -10,12 +10,17 @@ class UserInterfaceManager {
         this._core = core;
 
         this._initCore();
+        this._initInterface();
     }
 
 
     _initCore() {
 
         this._core.create(this._userInterface);
+    }
+
+
+    _initInterface() {
 
         this._initViewEvents();
 
@@ -24,8 +29,6 @@ class UserInterfaceManager {
 
 
     // Aquí es donde van los métodos que escuchan
-
-
     _initViewEvents() {
 
 
