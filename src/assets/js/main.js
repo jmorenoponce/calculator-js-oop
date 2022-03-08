@@ -1,6 +1,6 @@
 "use strict";
 
 
-const calculadora = new Calculator();
+const miCalculadora = new Calculator();
 
-calculadora.init();
+miCalculadora.init();
