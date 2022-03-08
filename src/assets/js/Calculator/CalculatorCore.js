@@ -4,15 +4,24 @@
 class CalculatorCore {
 
 
-    constructor(userInterface) {
-
-        this._userInterface = userInterface;
+    constructor() {
 
         this._currentOperand = null;
         this._previousOperand = null;
         this._operation = null;
 
         this._memoryData = 0;
+
+        this._userInterface = {};
+    }
+
+
+    create(userInterface) {
+
+        this._userInterface = {
+            previousOperand: userInterface._viewElements.previousOperandDisplay,
+            currentOperand: userInterface._viewElements.currentOperandDisplay
+        }
 
         this._initialize();
     }
@@ -140,13 +149,11 @@ class CalculatorCore {
 
     _updateDisplay() {
 
-        this._userInterface._viewElements.currentOperandDisplay.innerText = this._currentOperand;
+        this._userInterface.currentOperand.innerText = this._currentOperand;
+        this._userInterface.previousOperand.innerText = '';
 
-        if (this._operation != null) {
-            this._userInterface._viewElements.previousOperandDisplay.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
-        } else {
-            this._userInterface._viewElements.previousOperandDisplay.innerText = '';
-        }
+        if (this._operation != null)
+            this._userInterface.previousOperand.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
     }
 
 

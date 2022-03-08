@@ -1,7 +1,7 @@
 "use strict";
 
 
-class CalculatorUserInterface {
+class UserInterface {
 
 
     constructor() {
@@ -28,18 +28,14 @@ class CalculatorUserInterface {
 
     _createEnvironment() {
 
-        this._environment = new CalculatorEnvironment();
+        this._environment = new UserInterfaceEnvironment();
     }
 
 
     _initialize() {
 
         this._initConfig();
-
         this._initViewElements();
-        this._initViewEvents();
-
-        this._initKeyboardEvents();
     }
 
 
@@ -63,57 +59,5 @@ class CalculatorUserInterface {
         this._viewElements.deleteButton = document.querySelector('.ux-calc-delete');
         this._viewElements.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
         this._viewElements.clearAllButton = document.querySelector('.ux-calc-clear-all');
-    }
-
-
-    _initViewEvents() {
-
-        // Init the Listeners for buttons control
-        this._viewElements.numberButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this.appendNumber(button.innerText);
-                this._updateDisplay();
-            });
-        });
-
-        this._viewElements.operationButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this.chooseOperation(button.innerText);
-                this._updateDisplay();
-            });
-        });
-
-        this._viewElements.memoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this._memoryManager(button.innerText);
-                this._updateDisplay();
-            });
-        });
-
-        this._viewElements.equalsButton.addEventListener('click', () => {
-            this.calculate();
-            this._updateDisplay();
-        });
-
-        this._viewElements.deleteButton.addEventListener('click', () => {
-            this.deleteNumber();
-            this._updateDisplay();
-        });
-
-        this._viewElements.clearOperandButton.addEventListener('click', () => {
-            this.clearOperand();
-            this._updateDisplay()
-        })
-
-        this._viewElements.clearAllButton.addEventListener('click', () => {
-            this.clearAll();
-            this._updateDisplay();
-        });
-    }
-
-
-    _initKeyboardEvents() {
-
-        console.log(this._environment._keyboardCodes);
     }
 }

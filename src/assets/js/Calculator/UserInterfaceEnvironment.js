@@ -1,7 +1,7 @@
 "use strict";
 
 
-class CalculatorEnvironment {
+class UserInterfaceEnvironment {
 
 
     constructor() {
