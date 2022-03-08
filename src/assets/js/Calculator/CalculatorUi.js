@@ -28,7 +28,7 @@ class CalculatorUi {
 
     _createEnvironment() {
 
-        this._environment = new CalculatorUIEnvironment();
+        this._environment = new CalculatorUiEnvironment();
     }
 
 

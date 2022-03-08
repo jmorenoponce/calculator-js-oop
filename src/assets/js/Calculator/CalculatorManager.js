@@ -1,7 +1,7 @@
 "use strict";
 
 
-class CalculatorUiManager {
+class CalculatorManager {
 
 
     constructor(userInterface, core) {

@@ -16,7 +16,7 @@ class Calculator {
 
         this._calculatorCore = new CalculatorCore();
         this._userInterface = new CalculatorUi();
-        this._interfaceManager = new CalculatorUiManager(this._userInterface, this._calculatorCore);
+        this._interfaceManager = new CalculatorManager(this._userInterface, this._calculatorCore);
 
         this._interfaceManager.init();
     }
