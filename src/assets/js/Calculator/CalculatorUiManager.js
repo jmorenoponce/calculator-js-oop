@@ -1,13 +1,17 @@
 "use strict";
 
 
-class UserInterfaceManager {
+class CalculatorUiManager {
 
 
     constructor(userInterface, core) {
 
         this._userInterface = userInterface;
         this._core = core;
+    }
+
+
+    init() {
 
         this._initCore();
         this._initInterface();
@@ -23,14 +27,11 @@ class UserInterfaceManager {
     _initInterface() {
 
         this._initViewEvents();
-
         this._initKeyboardEvents();
     }
 
 
-    // Aquí es donde van los métodos que escuchan
     _initViewEvents() {
-
 
         // this._viewElements.addEventListener('click', () => {
         //
@@ -84,14 +85,14 @@ class UserInterfaceManager {
 
     _initKeyboardEvents() {
 
-        console.log(this._environment._keyboardCodes);
+        // console.log(this._environment._keyboardCodes);
     }
 
 
     _catchViewEvent() {
 
-        let _elementCodes = this._environment._elementCodes;
-        let _keyboardCodes = this._environment._keyboardCodes;
+        // let _elementCodes = this._environment._elementCodes;
+        // let _keyboardCodes = this._environment._keyboardCodes;
 
         // switch (e.key) {
         //

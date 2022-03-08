@@ -1,7 +1,7 @@
 "use strict";
 
 
-class UserInterface {
+class CalculatorUi {
 
 
     constructor() {
@@ -28,7 +28,7 @@ class UserInterface {
 
     _createEnvironment() {
 
-        this._environment = new UserInterfaceEnvironment();
+        this._environment = new CalculatorUIEnvironment();
     }
 
 
@@ -47,11 +47,9 @@ class UserInterface {
 
     _initViewElements() {
 
-        // Display selector binding
         this._viewElements.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
         this._viewElements.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
 
-        //  Buttons selector binding
         this._viewElements.numberButtons = document.querySelectorAll('.ux-calc-number');
         this._viewElements.operationButtons = document.querySelectorAll('.ux-calc-operation');
         this._viewElements.memoryButtons = document.querySelectorAll('.ux-calc-memory');

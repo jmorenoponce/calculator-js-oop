@@ -6,7 +6,7 @@ class Calculator {
 
     constructor() {
 
-        this._core = null;
+        this._calculatorCore = null;
         this._userInterface = null;
         this._interfaceManager = null;
     }
@@ -14,11 +14,10 @@ class Calculator {
 
     init() {
 
-        this._userInterface = new UserInterface();
-        this._core = new CalculatorCore();
+        this._calculatorCore = new CalculatorCore();
+        this._userInterface = new CalculatorUi();
+        this._interfaceManager = new CalculatorUiManager(this._userInterface, this._calculatorCore);
 
-        this._interfaceManager = new UserInterfaceManager(this._userInterface, this._core)
-
-        console.log(this._interfaceManager);
+        this._interfaceManager.init();
     }
 }
