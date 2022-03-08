@@ -6,9 +6,9 @@ class CalculatorUserInterface {
 
     constructor() {
 
-        this._env = null;
+        this._environment = null;
 
-        this._viewElems = {
+        this._viewElements = {
             numberButtons: false,
             operationButtons: false,
             memoryButtons: false,
@@ -20,76 +20,92 @@ class CalculatorUserInterface {
             currentOperandDisplay: false
         }
 
-        return this._initialize();
+        this._createEnvironment();
+
+        this._initialize();
+    }
+
+
+    _createEnvironment() {
+
+        this._environment = new CalculatorEnvironment();
     }
 
 
     _initialize() {
 
-        this._env = new CalculatorEnvironment();
+        this._initConfig();
 
         this._initViewElements();
         this._initViewEvents();
+
         this._initKeyboardEvents();
+    }
+
+
+    _initConfig() {
+
+        console.log(this._environment._config);
     }
 
 
     _initViewElements() {
 
         // Display selector binding
-        this._viewElems.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
-        this._viewElems.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
+        this._viewElements.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
+        this._viewElements.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
 
         //  Buttons selector binding
-        this._viewElems.numberButtons = document.querySelectorAll('.ux-calc-number');
-        this._viewElems.operationButtons = document.querySelectorAll('.ux-calc-operation');
-        this._viewElems.memoryButtons = document.querySelectorAll('.ux-calc-memory');
-        this._viewElems.equalsButton = document.querySelector('.ux-calc-equals');
-        this._viewElems.deleteButton = document.querySelector('.ux-calc-delete');
-        this._viewElems.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
-        this._viewElems.clearAllButton = document.querySelector('.ux-calc-clear-all');
+        this._viewElements.numberButtons = document.querySelectorAll('.ux-calc-number');
+        this._viewElements.operationButtons = document.querySelectorAll('.ux-calc-operation');
+        this._viewElements.memoryButtons = document.querySelectorAll('.ux-calc-memory');
+        this._viewElements.equalsButton = document.querySelector('.ux-calc-equals');
+        this._viewElements.deleteButton = document.querySelector('.ux-calc-delete');
+        this._viewElements.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
+        this._viewElements.clearAllButton = document.querySelector('.ux-calc-clear-all');
     }
 
 
     _initViewEvents() {
+
         // Init the Listeners for buttons control
-        this._viewElems.numberButtons.forEach(button => {
+        this._viewElements.numberButtons.forEach(button => {
             button.addEventListener('click', () => {
                 this.appendNumber(button.innerText);
                 this._updateDisplay();
             });
         });
 
-        this._viewElems.operationButtons.forEach(button => {
+        this._viewElements.operationButtons.forEach(button => {
             button.addEventListener('click', () => {
                 this.chooseOperation(button.innerText);
                 this._updateDisplay();
             });
         });
 
-        this._viewElems.memoryButtons.forEach(button => {
+        this._viewElements.memoryButtons.forEach(button => {
             button.addEventListener('click', () => {
                 this._memoryManager(button.innerText);
                 this._updateDisplay();
             });
         });
 
-        this._viewElems.equalsButton.addEventListener('click', () => {
+        this._viewElements.equalsButton.addEventListener('click', () => {
             this.calculate();
             this._updateDisplay();
         });
 
-        this._viewElems.deleteButton.addEventListener('click', () => {
+        this._viewElements.deleteButton.addEventListener('click', () => {
             this.deleteNumber();
             this._updateDisplay();
         });
 
-        this._viewElems.clearOperandButton.addEventListener('click', () => {
+        this._viewElements.clearOperandButton.addEventListener('click', () => {
             this.clearOperand();
             this._updateDisplay()
         })
 
-        this._viewElems.clearAllButton.addEventListener('click', () => {
+        this._viewElements.clearAllButton.addEventListener('click', () => {
             this.clearAll();
             this._updateDisplay();
         });
@@ -98,6 +114,6 @@ class CalculatorUserInterface {
 
     _initKeyboardEvents() {
 
-        console.log(this._keyboardCodes);
+        console.log(this._environment._keyboardCodes);
     }
 }
