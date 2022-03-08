@@ -11,8 +11,6 @@ class CalculatorEnvironment {
         this._keyboardCodes = {};
 
         this._initialize();
-
-        return this;
     }
 
 
@@ -26,18 +24,18 @@ class CalculatorEnvironment {
 
     _declareConfig() {
 
-        this._config = {
-            THEME: 'Dark'
-            // Do Stuff
-        }
+        return {
 
-        return this._config;
+            THEME: 'Dark',
+            LOCALE: 'es'
+            // ...
+        }
     }
 
 
     _declareElementCodes() {
 
-        this._elementCodes = {
+        return {
 
             FNC_C: 'C',
             FNC_CE: 'CE',
@@ -67,24 +65,19 @@ class CalculatorEnvironment {
             DGT_8: '8',
             DGT_9: '9',
         }
-
-        return this._elementCodes
     }
 
 
     _declareKeyboardCodes() {
 
-        this._keyboardCodes = {
+        return {
+
             KEY_ENTER: 13,
             KEY_BACKSPACE: 8,
             KEY_SPACE: 32,
             KEY_UP: 38,
             KEY_DOWN: 40
             // ...
-        }
-
-        return this._keyboardCodes;
+        };
     }
 }
-
-

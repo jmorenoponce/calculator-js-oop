@@ -334,13 +334,13 @@ ul, li {
     .cmp-calculator .display-cnt .display-row.current-operand {
       font-size: 22px;
       font-weight: 500; }
-.cmp-calculator .buttons-cnt .fnc-btn {
+.cmp-calculator .buttons-cnt .btn-function {
   background-color: #ff2929; }
-.cmp-calculator .buttons-cnt .mem-btn {
+.cmp-calculator .buttons-cnt .btn-memory {
   background-color: #29a7de; }
-.cmp-calculator .buttons-cnt .opr-btn {
+.cmp-calculator .buttons-cnt .btn-operation {
   background-color: #969696; }
-.cmp-calculator .buttons-cnt .dgt-btn {
+.cmp-calculator .buttons-cnt .btn-digit {
   background-color: #484949; }
 .cmp-calculator .buttons-cnt.inactive {
   display: none; }
