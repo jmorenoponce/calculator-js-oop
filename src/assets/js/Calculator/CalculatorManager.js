@@ -4,27 +4,16 @@
 class CalculatorManager {
 
 
-    constructor(userInterface, core) {
+    constructor(calculatorCore, userInterface) {
 
-        this._userInterface = userInterface;
-        this._core = core;
+        this._core = calculatorCore;
+        this._interface = userInterface;
     }
 
 
     init() {
 
-        this._initCore();
-        this._initInterface();
-    }
-
-
-    _initCore() {
-
-        this._core.create(this._userInterface);
-    }
-
-
-    _initInterface() {
+        this._core.init(this._interface);
 
         this._initViewEvents();
         this._initKeyboardEvents();

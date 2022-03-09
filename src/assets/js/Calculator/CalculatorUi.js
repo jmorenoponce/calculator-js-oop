@@ -20,13 +20,12 @@ class CalculatorUi {
             currentOperandDisplay: false
         }
 
-        this._createEnvironment();
-
+        this._loadEnvironment();
         this._initialize();
     }
 
 
-    _createEnvironment() {
+    _loadEnvironment() {
 
         this._environment = new CalculatorUiEnvironment();
     }

@@ -27,7 +27,9 @@ class CalculatorUiEnvironment {
         return {
 
             THEME: 'Dark',
-            LOCALE: 'es'
+            LOCALE: 'es',
+            SCIENTIFIC: false,
+            DECIMALS_DIGIT: 2
             // ...
         }
     }

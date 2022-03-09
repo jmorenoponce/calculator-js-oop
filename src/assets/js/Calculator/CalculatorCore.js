@@ -6,19 +6,20 @@ class CalculatorCore {
 
     constructor() {
 
+        this._userInterface = {};
+
         this._currentOperand = null;
         this._previousOperand = null;
         this._operation = null;
 
         this._memoryData = 0;
-
-        this._userInterface = {};
     }
 
 
-    create(userInterface) {
+    init(userInterface) {
 
         this._userInterface = {
+
             previousOperand: userInterface._viewElements.previousOperandDisplay,
             currentOperand: userInterface._viewElements.currentOperandDisplay
         }
