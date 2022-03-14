@@ -57,4 +57,39 @@ class CalculatorUi {
         this._viewElements.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
         this._viewElements.clearAllButton = document.querySelector('.ux-calc-clear-all');
     }
+
+
+    _getDisplayNumber(number) {
+
+        const stringNumber = number.toString();
+        const integerDigits = parseFloat(stringNumber.split('.')[0]);
+        const decimalDigits = stringNumber.split('.')[1];
+
+        let integerDisplay;
+
+        if (isNaN(integerDigits)) {
+            integerDisplay = '';
+        } else {
+            integerDisplay = integerDigits.toLocaleString('es', {maximumFractionDigits: 0});
+        }
+
+        if (decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}`;
+        } else {
+            return integerDisplay;
+        }
+    }
+
+    updateDisplay(currentOperand, previousOperand, operation) {
+
+        this._currentOperand = currentOperand;
+        this._previousOperand = previousOperand;
+        this._operation = operation
+
+        this._viewElements.currentOperandDisplay.innerText = this._currentOperand;
+        this._viewElements.previousOperandDisplay.innerText = '';
+
+        if (this._operation != null)
+            this._viewElements.previousOperandDisplay.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
+    }
 }

@@ -16,13 +16,13 @@ class CalculatorUiEnvironment {
 
     _initialize() {
 
-        this._config = this._declareConfig();
-        this._elementCodes = this._declareElementCodes();
-        this._keyboardCodes = this._declareKeyboardCodes();
+        this._config = this._defaultConfig();
+        this._elementCodes = this._defaultElementCodes();
+        this._keyboardCodes = this._defaultKeyboardCodes();
     }
 
 
-    _declareConfig() {
+    _defaultConfig() {
 
         return {
 
@@ -35,7 +35,7 @@ class CalculatorUiEnvironment {
     }
 
 
-    _declareElementCodes() {
+    _defaultElementCodes() {
 
         return {
 
@@ -70,7 +70,7 @@ class CalculatorUiEnvironment {
     }
 
 
-    _declareKeyboardCodes() {
+    _defaultKeyboardCodes() {
 
         return {
 

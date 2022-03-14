@@ -6,7 +6,7 @@ class CalculatorCore {
 
     constructor() {
 
-        this._userInterface = {};
+        this._interfaceCodes = {};
 
         this._currentOperand = null;
         this._previousOperand = null;
@@ -16,26 +16,20 @@ class CalculatorCore {
     }
 
 
-    init(userInterface) {
+    init(interfaceCodes) {
 
-        this._userInterface = {
-
-            previousOperand: userInterface._viewElements.previousOperandDisplay,
-            currentOperand: userInterface._viewElements.currentOperandDisplay
-        }
-
+        this._interfaceCodes = interfaceCodes;
         this._initialize();
     }
 
 
     _initialize() {
 
-        this._clearAll();
-        this._updateDisplay();
+        this.clearAll();
     }
 
 
-    _clearAll() {
+    clearAll() {
 
         this._currentOperand = '0';
         this._previousOperand = '0';
@@ -43,13 +37,13 @@ class CalculatorCore {
     }
 
 
-    _clearOperand() {
+    clearOperand() {
 
         this._currentOperand = '0';
     }
 
 
-    _deleteNumber() {
+    deleteNumber() {
 
         this._currentOperand = this._currentOperand.toString().slice(0, -1);
 
@@ -58,7 +52,7 @@ class CalculatorCore {
     }
 
 
-    _appendNumber(number) {
+    appendNumber(number) {
 
         if (number === '.' && this._currentOperand.toString().includes('.'))
             return;
@@ -70,10 +64,10 @@ class CalculatorCore {
     }
 
 
-    _chooseOperation(operation) {
+    chooseOperation(operation) {
 
         if (this._previousOperand !== '0') {
-            this._calculate();
+            this.calculate();
         }
 
         this._previousOperand = this._currentOperand;
@@ -82,7 +76,7 @@ class CalculatorCore {
     }
 
 
-    _calculate() {
+    calculate() {
 
         const prev = parseFloat(this._previousOperand);
         const current = parseFloat(this._currentOperand);
@@ -93,19 +87,19 @@ class CalculatorCore {
         let result;
 
         switch (this._operation) {
-            case this._userInterface._elementCodes.OPR_SUM:
+            case this._interfaceCodes.OPR_SUM:
                 result = prev + current;
                 break;
 
-            case this._userInterface._elementCodes.OPR_SUB:
+            case this._interfaceCodes.OPR_SUB:
                 result = prev - current;
                 break;
 
-            case this._userInterface._elementCodes.OPR_MUL:
+            case this._interfaceCodes.OPR_MUL:
                 result = prev * current;
                 break;
 
-            case this._userInterface._elementCodes.OPR_DIV:
+            case this._interfaceCodes.OPR_DIV:
                 result = prev / current;
                 break;
 
@@ -119,63 +113,31 @@ class CalculatorCore {
     }
 
 
-    _memoryManager(operation) {
+    memoryManager(operation) {
 
         switch (operation) {
-            case this._userInterface._elementCodes.MEM_CLEAR: // Clear
+            case this._interfaceCodes.MEM_CLEAR: // Clear
                 this._memoryData = 0;
                 break;
 
-            case this._userInterface._elementCodes.MEM_READ: // Read
+            case this._interfaceCodes.MEM_READ: // Read
                 this._currentOperand = this._memoryData.toString();
                 break;
 
-            case this._userInterface._elementCodes.MEM_STORE: // Store
+            case this._interfaceCodes.MEM_STORE: // Store
                 this._memoryData = parseFloat(this._currentOperand);
                 break;
 
-            case this._userInterface._elementCodes.MEM_SUM: // Add
+            case this._interfaceCodes.MEM_SUM: // Add
                 this._memoryData += parseFloat(this._currentOperand);
                 break;
 
-            case this._userInterface._elementCodes.MEM_SUB: // Subs
+            case this._interfaceCodes.MEM_SUB: // Subs
                 this._memoryData -= parseFloat(this._currentOperand);
                 break;
 
             default:
                 return;
-        }
-    }
-
-
-    _updateDisplay() {
-
-        this._userInterface.currentOperand.innerText = this._currentOperand;
-        this._userInterface.previousOperand.innerText = '';
-
-        if (this._operation != null)
-            this._userInterface.previousOperand.innerText = `${this._getDisplayNumber(this._previousOperand)} ${this._operation}`;
-    }
-
-
-    _getDisplayNumber(number) {
-
-        const stringNumber = number.toString();
-        const integerDigits = parseFloat(stringNumber.split('.')[0]);
-        const decimalDigits = stringNumber.split('.')[1];
-
-        let integerDisplay;
-
-        if (isNaN(integerDigits)) {
-            integerDisplay = '';
-        } else {
-            integerDisplay = integerDigits.toLocaleString('es', {maximumFractionDigits: 0});
-        }
-
-        if (decimalDigits != null) {
-            return `${integerDisplay}.${decimalDigits}`;
-        } else {
-            return integerDisplay;
         }
     }
 }
