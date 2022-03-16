@@ -46,16 +46,28 @@ class CalculatorUi {
 
     _initViewElements() {
 
-        this._viewElements.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
-        this._viewElements.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
+        let _prueba = document.querySelectorAll('#ux-calc-display [class^="ux-calc-"]');
 
-        this._viewElements.numberButtons = document.querySelectorAll('.ux-calc-number');
-        this._viewElements.operationButtons = document.querySelectorAll('.ux-calc-operation');
-        this._viewElements.memoryButtons = document.querySelectorAll('.ux-calc-memory');
-        this._viewElements.equalsButton = document.querySelector('.ux-calc-equals');
-        this._viewElements.deleteButton = document.querySelector('.ux-calc-delete');
-        this._viewElements.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
-        this._viewElements.clearAllButton = document.querySelector('.ux-calc-clear-all');
+        console.log(_prueba);
+
+        _prueba.each(function () {
+
+            let target = this;
+            let target_id = target.getAttribute('data-calc-key');
+
+            console.log(target_id);
+        });
+
+        // this._viewElements.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
+        // this._viewElements.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
+        //
+        // this._viewElements.numberButtons = document.querySelectorAll('.ux-calc-number');
+        // this._viewElements.operationButtons = document.querySelectorAll('.ux-calc-operation');
+        // this._viewElements.memoryButtons = document.querySelectorAll('.ux-calc-memory');
+        // this._viewElements.equalsButton = document.querySelector('.ux-calc-equals');
+        // this._viewElements.deleteButton = document.querySelector('.ux-calc-delete');
+        // this._viewElements.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
+        // this._viewElements.clearAllButton = document.querySelector('.ux-calc-clear-all');
     }
 
 

@@ -22,48 +22,47 @@ class CalculatorUiManager {
 
     _initViewEvents() {
 
-
-        this._interface._viewElements.numberButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this._core.appendNumber(button.innerText);
-                this._interface.updateDisplay();
-            });
-        });
-
-        this._interface._viewElements.operationButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this._core.chooseOperation(button.innerText);
-                this._interface.updateDisplay();
-            });
-        });
-
-        this._interface._viewElements.memoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this._core.memoryManager(button.innerText);
-                this._interface.updateDisplay();
-            });
-        });
-
-        this._interface._viewElements.equalsButton.addEventListener('click', () => {
-            this._core.calculate();
-            this._interface.updateDisplay();
-        });
-
-        this._interface._viewElements.deleteButton.addEventListener('click', () => {
-            this._core.deleteNumber();
-            this._interface.updateDisplay();
-        });
-
-        this._interface._viewElements.clearOperandButton.addEventListener('click', () => {
-            this._core.clearOperand();
-            this._interface.updateDisplay()
-        })
-
-        this._interface._viewElements.clearAllButton.addEventListener('click', () => {
-            this._core.clearAll();
-            this._interface.updateDisplay();
-        });
-
+        //
+        // this._interface._viewElements.numberButtons.forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         this._core.appendNumber(button.innerText);
+        //         this._interface.updateDisplay();
+        //     });
+        // });
+        //
+        // this._interface._viewElements.operationButtons.forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         this._core.chooseOperation(button.innerText);
+        //         this._interface.updateDisplay();
+        //     });
+        // });
+        //
+        // this._interface._viewElements.memoryButtons.forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         this._core.memoryManager(button.innerText);
+        //         this._interface.updateDisplay();
+        //     });
+        // });
+        //
+        // this._interface._viewElements.equalsButton.addEventListener('click', () => {
+        //     this._core.calculate();
+        //     this._interface.updateDisplay();
+        // });
+        //
+        // this._interface._viewElements.deleteButton.addEventListener('click', () => {
+        //     this._core.deleteNumber();
+        //     this._interface.updateDisplay();
+        // });
+        //
+        // this._interface._viewElements.clearOperandButton.addEventListener('click', () => {
+        //     this._core.clearOperand();
+        //     this._interface.updateDisplay()
+        // })
+        //
+        // this._interface._viewElements.clearAllButton.addEventListener('click', () => {
+        //     this._core.clearAll();
+        //     this._interface.updateDisplay();
+        // });
     }
 
 
