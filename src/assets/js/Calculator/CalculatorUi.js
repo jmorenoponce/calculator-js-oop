@@ -4,20 +4,16 @@
 class CalculatorUi {
 
 
-    constructor() {
+    constructor(calculatorCore) {
+
+        this._core = calculatorCore;
 
         this._environment = null;
 
         this._viewElements = {
-            numberButtons: false,
-            operationButtons: false,
-            memoryButtons: false,
-            equalsButton: false,
-            deleteButton: false,
-            clearOperandButton: false,
-            clearAllButton: false,
-            previousOperandDisplay: false,
-            currentOperandDisplay: false
+            previousOperandDisplay: null,
+            currentOperandDisplay: null,
+            buttonsPanel: null,
         }
 
         this._loadEnvironment();
@@ -34,7 +30,10 @@ class CalculatorUi {
     _initialize() {
 
         this._initConfig();
-        this._initViewElements();
+        this._initElements();
+        this._initEvents();
+
+        this._core.init(this._environment._buttonsCodes);
     }
 
 
@@ -44,32 +43,110 @@ class CalculatorUi {
     }
 
 
-    _initViewElements() {
+    _initElements() {
 
-        let _prueba = document.querySelectorAll('#ux-calc-display [class^="ux-calc-"]');
-
-        console.log(_prueba);
-
-        _prueba.each(function () {
-
-            let target = this;
-            let target_id = target.getAttribute('data-calc-key');
-
-            console.log(target_id);
-        });
-
-        // this._viewElements.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
-        // this._viewElements.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
-        //
-        // this._viewElements.numberButtons = document.querySelectorAll('.ux-calc-number');
-        // this._viewElements.operationButtons = document.querySelectorAll('.ux-calc-operation');
-        // this._viewElements.memoryButtons = document.querySelectorAll('.ux-calc-memory');
-        // this._viewElements.equalsButton = document.querySelector('.ux-calc-equals');
-        // this._viewElements.deleteButton = document.querySelector('.ux-calc-delete');
-        // this._viewElements.clearOperandButton = document.querySelector('.ux-calc-clear-operand');
-        // this._viewElements.clearAllButton = document.querySelector('.ux-calc-clear-all');
+        this._viewElements.previousOperandDisplay = document.querySelector('.ux-calc-previous-operand');
+        this._viewElements.currentOperandDisplay = document.querySelector('.ux-calc-current-operand');
+        this._viewElements.buttonsPanel = document.getElementById('ux-calc-panel');
     }
 
+
+    _initEvents() {
+
+        this._viewElements.buttonsPanel.addEventListener('click', (element) => {
+
+            this._catchViewEvent(element.target);
+        });
+    }
+
+
+    _catchViewEvent(element) {
+
+        const _action = element.getAttribute('data-calc-key');
+
+        if (element.classList.contains('ux-calc-memory')) {
+            this._memoryManager(_action);
+            return;
+        }
+
+        if (element.classList.contains('ux-calc-number')) {
+            this._numberManager(_action);
+            return;
+        }
+
+        if (element.classList.contains('ux-calc-operation')) {
+            this._operationManager(_action);
+            return;
+        }
+
+        if (element.classList.contains('ux-calc-status')) {
+            this._functionManager(_action);
+            return;
+        }
+
+        return false;
+    }
+
+
+    _memoryManager(action) {
+
+        console.log(action);
+    }
+
+
+    _numberManager(action) {
+
+        this._core.appendNumber(action);
+    }
+
+
+    _operationManager(action) {
+
+        console.log(action);
+    }
+
+
+    _functionManager(action) {
+
+        console.log(action);
+    }
+
+
+    // switch (e.key) {
+    //
+    //     case _elementCodes.FNC_CE:
+    //     case _keyboardCodes.KEY_ESCAPE:
+    //         this.clearAll();
+    //         this._updateDisplay();
+    //         break;
+    //
+    //     case 'Backspace':
+    //         this.clearEntry();
+    //         break;
+    //
+    //     case '+':
+    //     case '-':
+    //     case '*':
+    //     case '/':
+    //     case '%':
+    //         this.addOperation(e.key);
+    //         break;
+    //
+    //     case 'Enter':
+    //     case '=':
+    //         this.calc();
+    //         break;
+    //
+    //     case '.':
+    //     case ',':
+    //         this.addDot();
+    //         break;
+    //
+    //
+    //     case 'c':
+    //         if (e.ctrlKey) this.copyToClipboard();
+    //         break;
+    // }
 
     _getDisplayNumber(number) {
 
@@ -91,6 +168,7 @@ class CalculatorUi {
             return integerDisplay;
         }
     }
+
 
     updateDisplay(currentOperand, previousOperand, operation) {
 

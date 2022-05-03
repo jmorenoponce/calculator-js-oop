@@ -1,8 +1,6 @@
 "use strict";
 
-
 class Calculator {
-
 
     constructor() {
 
@@ -12,13 +10,9 @@ class Calculator {
         this._interfaceManager = null;
     }
 
-
     init() {
 
-        this._userInterface = new CalculatorUi();
         this._calculatorCore = new CalculatorCore();
-
-        this._interfaceManager = new CalculatorUiManager(this._userInterface, this._calculatorCore);
-        this._interfaceManager.init();
+        this._userInterface = new CalculatorUi(this._calculatorCore);
     }
 }

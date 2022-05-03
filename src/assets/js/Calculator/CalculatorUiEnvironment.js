@@ -7,7 +7,7 @@ class CalculatorUiEnvironment {
     constructor() {
 
         this._config = {}
-        this._elementCodes = {};
+        this._buttonsCodes = {};
         this._keyboardCodes = {};
 
         this._initialize();
@@ -17,7 +17,7 @@ class CalculatorUiEnvironment {
     _initialize() {
 
         this._config = this._defaultConfig();
-        this._elementCodes = this._defaultElementCodes();
+        this._buttonsCodes = this._defaultButtonsCodes();
         this._keyboardCodes = this._defaultKeyboardCodes();
     }
 
@@ -25,7 +25,6 @@ class CalculatorUiEnvironment {
     _defaultConfig() {
 
         return {
-
             THEME: 'Dark',
             LOCALE: 'es',
             SCIENTIFIC: false,
@@ -35,10 +34,9 @@ class CalculatorUiEnvironment {
     }
 
 
-    _defaultElementCodes() {
+    _defaultButtonsCodes() {
 
         return {
-
             FNC_C: 'C',
             FNC_CE: 'CE',
             FNC_DEL: 'DEL',
@@ -73,7 +71,6 @@ class CalculatorUiEnvironment {
     _defaultKeyboardCodes() {
 
         return {
-
             KEY_ENTER: 13,
             KEY_BACKSPACE: 8,
             KEY_SPACE: 32,
