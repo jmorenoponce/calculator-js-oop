@@ -10,6 +10,7 @@ class CalculatorCore {
 
         this._currentOperand = null;
         this._previousOperand = null;
+
         this._operation = null;
 
         this._memoryData = 0;

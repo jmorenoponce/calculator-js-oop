@@ -170,7 +170,7 @@ class CalculatorUi {
     }
 
 
-    updateDisplay(currentOperand, previousOperand, operation) {
+    _updateDisplay(currentOperand, previousOperand, operation) {
 
         this._currentOperand = currentOperand;
         this._previousOperand = previousOperand;

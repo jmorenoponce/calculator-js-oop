@@ -6,8 +6,6 @@ class Calculator {
 
         this._userInterface = null;
         this._calculatorCore = null;
-
-        this._interfaceManager = null;
     }
 
     init() {
